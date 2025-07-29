@@ -11,6 +11,7 @@ env:
   SUBSCRIPTION-ID: 3f010d72-b766-4f33-9435-8ce39ae8d948
   WEBAPP-NAME: az2006app28817
 
+
 jobs:
   #Build, test and publish .net web project in repository
   buildandtest:
