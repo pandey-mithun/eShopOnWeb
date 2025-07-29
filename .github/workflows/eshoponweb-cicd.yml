@@ -7,11 +7,11 @@ on:
   
 #Environment variables https://docs.github.com/en/actions/learn-github-actions/environment-variables
 env:
-  RESOURCE-GROUP: Learner-RG-CentralIndia
+  RESOURCE_GROUP: Learner-RG-CentralIndia
   LOCATION: centralindia
-  TEMPLATE-FILE: infra/webapp.bicep
-  SUBSCRIPTION-ID: 3f010d72-b766-4f33-9435-8ce39ae8d948
-  WEBAPP-NAME: az2006app28817
+  TEMPLATE_FILE: infra/webapp.bicep
+  SUBSCRIPTION_ID: 3f010d72-b766-4f33-9435-8ce39ae8d948
+  WEBAPP_NAME: az2006app28817
 
 
 jobs:
@@ -83,10 +83,10 @@ jobs:
     - name: deploy
       uses: azure/arm-deploy@v2
       with:
-        subscriptionId: ${{ env.SUBSCRIPTION-ID }}
-        resourceGroupName: ${{ env.RESOURCE-GROUP }}
+        subscriptionId: ${{ env.SUBSCRIPTION_ID }}
+        resourceGroupName: ${{ env.RESOURCE_GROUP }}
         template: bicep-template/webapp.bicep
-        parameters: 'webAppName=${{ env.WEBAPP-NAME }} location=${{ env.LOCATION }}'
+        parameters: 'webAppName=${{ env.WEBAPP_NAME }} location=${{ env.LOCATION }}'
         failOnStdErr: false   
     
     # Publish website to Azure App Service (WebApp)
@@ -96,7 +96,7 @@ jobs:
       uses: Azure/webapps-deploy@v3
       with:
         type: ZIP
-        app-name: ${{ env.WEBAPP-NAME  }}
+        app-name: ${{ env.WEBAPP_NAME  }}
         package: .net-app/app.zip
 
     # Publish website to Azure App Service using CLI (WebApp)
@@ -104,4 +104,4 @@ jobs:
       uses: Azure/cli@v2
       with:
         inlineScript: |
-             az webapp deploy --name ${{ env.WEBAPP-NAME }} --resource-group ${{ env.RESOURCE-GROUP }} --src-path .net-app/app.zip --type zip
+             az webapp deploy --name ${{ env.WEBAPP_NAME }} --RESOURCE_GROUP ${{ env.RESOURCE_GROUP }} --src-path .net-app/app.zip --type zip
