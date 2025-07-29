@@ -104,4 +104,4 @@ jobs:
       uses: Azure/cli@v2
       with:
         inlineScript: |
-             az webapp deploy --name ${{ env.WEBAPP_NAME }} --RESOURCE_GROUP ${{ env.RESOURCE_GROUP }} --src-path .net-app/app.zip --type zip
+             az webapp deploy --name ${{ env.WEBAPP_NAME }} --RESOURCE-GROUP ${{ env.RESOURCE_GROUP }} --src-path .net-app/app.zip --type zip
